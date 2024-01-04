@@ -1,0 +1,525 @@
+<!DOCTYPE html><html lang="en"><head>
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover">
+<title>AppKit Mobile</title>
+<link rel="stylesheet" type="text/css" href="bootstrap.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="fontawesome-all.min.css">
+<link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+<link rel="apple-touch-icon" sizes="180x180" href="images/icon-192x192.png">
+<style>
+.progress-container {
+  background-color: tra;
+  width: 100%;
+  height: 10px;
+}
+
+.progress {
+  background-color: black;
+  height: 10px;
+  width: 0;
+  transition: width 0.3s ease-in-out;
+}
+</style>
+<style>
+    
+   .timeline-container {
+  width: 100%;
+  height: 8px;
+  background-color: transparent;
+  overflow: hidden;
+}
+
+.timeline-progress {
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: black;
+  transition: width 0.3s ease-in-out;
+}
+
+.timeline-container:before {
+  content: "";
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: pink;
+  opacity: 0.5;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.timeline-container:hover:before {
+  opacity: 1;  /* Increase the opacity on hover */
+}
+
+.timeline-container:after {
+  content: "";
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid pink;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;  /* Prevent the added border from affecting hover events */
+}
+
+.timeline-container:hover:after {
+  opacity: 1;  /* Show the added border on hover */
+}
+
+.timeline-progress:hover {
+  background-color: blue;  /* Customize the progress color on hover */
+}    .colorr {
+  animation-name: colorGrow;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+    @keyframes colorGrow {
+    0% { background-color: pink; }
+  100% { background-color: aqua; }
+  }
+}
+  </style>
+</head>
+<body class="theme-light">
+<div id="preloader"><div class="spinner-border color-highlight" role="status"></div></div>
+<div id="page">
+<div class="card card-style rounded-s header header-fixed header-logo-left header" style="width: 100%;" data-card-height="40" data-card-width="fill">
+<a href="index.html" class="header-title"><img src="logo.gif" height="49" width="80"></a>
+</div>
+<div id="footer-bar" class="footer-bar-6">
+
+<a href="#"><i class="fa fa-file"></i><span>FAQ's</span></a>
+<a href="index.html" class="active-nav circle-nav"><i class="fa fa-home"></i><span>Welcome</span></a>
+<a href="#"><i class="fa fa-play-circle"></i><span>Listen</span></a>
+
+</div>
+<div class="page-content header-clear-medium">
+
+<div class="splide single-slider slider-no-arrows visible-slider slider-no-dots" id="single-slider-1" data-splide="{" interval":"50000",="" "perpage":1}"="">
+<div class="splide__track">
+<div class="splide__list">
+<div class="splide__slide">
+<div class="card card-style me-0 mb-3" data-card-height="200" style="background-image: url(welcome.png);">
+<div class="card-bottom p-3">
+    <span class="font-14 font-500 opacity-90"></span>
+<h4 class="color-white mb-1 font-18">Join Us And Discover New Talents</h4>
+</div>
+<div class="card-overlay bg-gradient "></div>
+</div>
+</div>
+<div class="splide__slide">
+<div class="card card-style me-0 mb-3" data-card-height="200" style="background-image: url(hear.png);">
+
+<div class="card-bottom p-3">
+        <span class="font-14 font-500 opacity-90"></span>
+<h4 class="color-white mb-1 font-18">Why Should We Call Them Future Celebs?!</h4>
+</div>
+<div class="card-overlay bg-gradient "></div>
+</div>
+</div>
+
+
+</div>
+</div>
+</div>
+<div class="page-content">
+<div class="content mt-0 mb-0">
+<div class="search-box search-dark shadow-xl border-0 bg-theme rounded-sm bottom-0">
+<i class="fa fa-search"></i>
+<input type="text" class="border-0" placeholder="Search here.. - try the word demo " data-search="">
+</div>
+<div class="search-results disabled-search-list">
+<div class="list-group list-custom-large">
+    <!--
+<a href="#" data-filter-item="" data-filter-name="all demo smartphone apple iphone ios">
+<i class="fab fa-apple color-gray-dark"></i>
+<span>Apple</span>
+<strong>Works on iOS 10 and Higher</strong>
+<i class="fa fa-angle-right"></i>
+</a>
+<a href="#" data-filter-item="" data-filter-name="all demo smartphone samsung android htc oneplus">
+<i class="fab fa-android color-green-dark"></i>
+<span>Android</span>
+<strong>Works on Android 5.1.1 and Higher</strong>
+<i class="fa fa-angle-right"></i>
+</a>
+<a href="#" data-filter-item="" data-filter-name="all demo code css3 css">
+<i class="fab fa-css3 color-blue-dark font-17"></i>
+<span>CSS3 </span>
+<strong>Beautiful Design. Simple Code.</strong>
+<i class="fa fa-angle-right"></i>
+</a>
+<a href="#" data-filter-item="" data-filter-name="fox all demo code html5 html">
+<i class="fab fa-html5 color-orange-dark"></i>
+<span>HTML5 </span>
+<strong>Powerful and Universally Compatible</strong>
+<i class="fa fa-angle-right"></i>
+</a>
+<a href="#" data-filter-item="" data-filter-name="all demo support help">
+<i class="fa fa-life-ring color-red-dark font-17"></i>
+<span>Support </span>
+<strong>Elite Quality, 24/7 Support for Buyers</strong>
+<i class="fa fa-angle-right"></i>
+</a>
+<a href="#" data-filter-item="" data-filter-name="all demo code js jquery java javascript">
+<i class="fab fa-js color-yellow-dark font-17"></i>
+<span>JavaScript </span>
+<strong>Clean Code, Easy to Use and Modify</strong>
+<i class="fa fa-angle-right"></i>
+</a>-->
+<a href="#" data-filter-item="" data-filter-name="all demo abcdefghijklmnopqrstuvwxyz">
+<i class="fa fa-file color-gray-dark font-17"></i>
+<span>Documentation </span>
+<strong>GlobalArtDocumentations.</strong>
+<i class="fa fa-angle-right"></i>
+</a>
+</div>
+</div>
+<div class="search-no-results disabled mt-4">
+<div class="card card-style mx-0">
+<div class="content">
+<p class="mb-n1 font-600 color-highlight">Sorry, there are</p>
+<h1>No Results</h1>
+<p>
+Your search brought up no results. Try using a different keyword. Or try typying all
+to see all items in the demo. These can be linked to anything you want.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="content mt-0 mb-0">
+<div class="d-flex">
+<div class="align-self-center">
+<h1 class="mb-0 font-15">Their Profiles</h1>
+</div>
+</div>
+</div>
+<div class="splide double-slider visible-slider slider-no-arrows slider-no-dots" id="double-slider-1" data-splide="{" interval":"50000",="" "perpage":2}"="">
+<div class="splide__track">
+<div class="splide__list">
+<div class="splide__slide">
+<a href="#" data-menu="article-5"  class="card card-style me-0 mb-0 " data-card-height="160">
+<div class="card-top px-2 mx-1 pt-1">
+<div class="d-flex">
+<div><span class="color-theme opacity-40 font-600 font-9"><i class="fa fa-location"></i>TANZANIA</span></div>
+<div class="ms-auto"><span class="color-theme opacity-40 font-500 font-11"><i class="fa fa-record-vinyl color-green-dark"></i> 2</span></div>
+</div>
+</div>
+<div class="card-center px-2 mx-1">
+<h3 class="pb-3 font-700">DOREMI Tz<br><span class="font-13">Joined 2hrs ago</span></h3>
+</div><br><br><br><br>
+<div class=" px-9 mx-5">
+<span class="font-11">See More..</span>
+</div>
+
+<div class="card-bottom px-2 mx-1 pb-2">
+<div class="d-flex">
+<div>
+<span class="d-block pe-2 font-10 font-400 color-theme opacity-50">Level</span>
+<span class="d-block pe-2 font-12 mt-n3 pt-1 color-red-light font-600">Noob</span>
+</div>
+<div class="ms-auto text-end">
+<span class="d-block font-10 font-400 color-theme opacity-50">Listeners</span>
+<span class="d-block font-12 mt-n3 pt-1 color-theme font-600">139 &nbsp;&nbsp;</span>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="splide__slide">
+<a href="#" data-menu="article-5"   class="card card-style me-0 mb-0 " data-card-height="160">
+<div class="card-top px-2 mx-1 pt-1">
+<div class="d-flex">
+<div><span class="color-theme opacity-40 font-600 font-9"><i class="fa fa-location"></i>TANZANIA</span></div>
+<div class="ms-auto"><span class="color-theme opacity-40 font-500 font-11"><i class="fa fa-record-vinyl color-green-dark"></i> 2</span></div>
+</div>
+</div>
+<div class="card-center px-2 mx-1">
+<h3 class="pb-3 font-700">DOREMI Tz<br><span class="font-13">Joined 2hrs ago</span></h3>
+</div><br><br><br><br>
+<div class=" px-9 mx-5">
+<span class="font-11">See More..</span>
+</div>
+
+<div class="card-bottom px-2 mx-1 pb-2">
+<div class="d-flex">
+<div>
+<span class="d-block pe-2 font-10 font-400 color-theme opacity-50">Level</span>
+<span class="d-block pe-2 font-12 mt-n3 pt-1 color-green-light font-600">Ace</span>
+</div>
+<div class="ms-auto text-end">
+<span class="d-block font-10 font-400 color-theme opacity-50">Listeners</span>
+<span class="d-block font-12 mt-n3 pt-1 color-theme font-600">139 &nbsp;&nbsp;</span>
+</div>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="content mb-0">
+<div class="d-flex">
+<div class="align-self-center">
+<h1 class="mb-0 font-15">Information</h1>
+</div>
+<div class="ms-auto align-self-center">
+<a href="#" class="float-end font-12 font-400"></a>
+</div>
+</div>
+</div>
+<div class="card card-style">
+<div class="content">
+<h4>GlobalArt Official 1st Event</h4>
+<div class="d-flex">
+<div>
+<h5 class="font-12 font-500 pb-2 pt-2 mb-0"><i class="fa fa-calendar-alt font-12 color-blue-dark pe-1"></i> March 03, 2024</h5>
+</div>
+<div class="ms-auto">
+<h5 class="font-12 font-500 pb-2 pt-2 mb-0"><i class="fa fa-exclamation-circle font-12 color-red-dark pe-1"></i> Requires Medium Class & Above</h5>
+</div>
+<div class="ms-auto">
+<h5 class="font-12 font-500 pb-2 pt-2 mb-0"><i class="fa fa-check-circle font-12 color-brow-dark pe-1"></i> Updates</h5>
+</div>
+</div>
+<div class="divider mb-2"></div>
+<div class="d-flex mb-n2">
+<div>
+<h6 class="font-400 color-theme opacity-50 font-11 pt-1">Assigned to Event</h6>
+<img src="images/1s.png" class="rounded-xl bg-green-dark" width="25">
+<img src="images/3s.png" class="rounded-xl bg-blue-dark" width="25">
+<img src="images/5s.png" class="rounded-xl bg-red-dark" width="25">
+<img src="images/6s.png" class="rounded-xl bg-teal-dark" width="25">
+<img src="images/7s.png" class="rounded-xl bg-magenta-dark" width="25">
+</div>
+<div class="ms-auto text-end">
+<h6 class="font-400 color-theme opacity-50 font-11 pt-2">Artists</h6>
+<h5 class="mb-n2 font-18">4/5</h5>
+</div>
+</div>
+</div>
+</div>
+<div class="content mb-0">
+<div class="d-flex">
+<div class="align-self-center">
+<h1 class="mb-0 font-15">This Weeks' Top Songs</h1>
+</div>
+<div class="ms-auto align-self-center">
+<a href="#" class="float-end font-12 font-400">See All</a>
+</div>
+</div>
+</div>
+<div class="card rounded-sm card-style" data-card-height="70">
+<a href="#" class="content my-3">
+<div class="d-flex">
+<div id="playPauseBtn" onclick="togglePlayPause()">
+<img src="nakutazamadoremi.jpg" id="playIcon PauseIcon" width="35" class="rounded-sm me-2">
+</div>
+<div class="ps-1">
+<h6 class="font-600 font-12 opacity-50 mb-0">Doremi Tz</h6>
+<h6 class="mb-1">Nakutazama</h6>
+</div>
+  <div class="timeline-container card-bottom">
+    <div id="timelineProgress" class=" timeline-progress"></div>
+  </div>
+</div>
+</a>
+<audio id="audio" >
+  <source src="Cinematic_Action_Trailer_Background_Music___Villain_Entry_Bgm_No_Copyright(256k).mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+
+
+</div>
+
+<div id="article-5" class="menu menu-box-modal rounded-0" data-menu-height="cover" data-menu-width="cover"><br>
+    <div class="page-content">
+<div class="content mt-0">
+<div class="d-flex">
+<div class="pe-3">
+<a href="#"><img src="1.jpg" width="90" class="rounded-circle border border-m border-green-dark"></a>
+</div>
+<div class="w-100">
+<div class="d-flex">
+<div>
+<h1 class="font-600 font-21">Demo_User88</h1>
+</div>
+<div class="ms-auto">
+<a href="#" data-menu="menu-controls" class="icon icon-xxs color-theme"><i class="fa fa-cross"></i></a>
+</div>
+</div>
+<div class="d-flex mt-1">
+<div class="flex-grow-1">
+<a href="#" class="btn bg-teal-dark btn-full btn-xs border border-black rounded-s font-600">Message</a>
+</div>
+
+</div>
+<a href="#" class="btn btn-full bg-blue-dark font-13 py-2 rounded-s font-600 mt-2">Follow</a>
+</div>
+</div>
+<p class="line-height-s pt-3 line-height-sm">
+<span class="font-13"><span class="font-14">📸</span> Model on GlobalArt </span><br>
+<span class="font-13"><span class="font-14">⛰️</span> Traveling all over the world </span><br>
+<span class="font-13"><span class="font-14">🐶</span> Just me and my doggo </span>
+</p>
+
+
+
+</div>
+<div class="divider mb-0"></div>
+<div class="d-flex py-2 text-center">
+<div class="m-auto">
+<strong class="color-theme d-block font-14 mb-n1">2</strong>
+<span class="color-theme d-block mt-n2 font-12 opacity-50">songs
+</span></div>
+<div class="m-auto">
+<strong class="color-theme d-block font-14 mb-n1">1.2k</strong>
+<span class="color-theme d-block mt-n2 font-12 opacity-50">followers
+</span></div>
+<div class="m-auto">
+<strong class="color-theme d-block font-14 mb-n1">1,013</strong>
+<span class="color-theme d-block mt-n2 font-12 opacity-50">following
+</span></div>
+</div>
+<div class="divider mb-0"></div>
+<br>
+<div class="card card-style" data-card-height="100">
+<div class="content">
+<div class="d-flex">
+<div class="me-3">
+<img id="playPauseBt" width="60" class="fluid-img rounded-m shadow-xl" src="1.jpg">
+</div>
+<div>
+<p class="color-highlight font-600 mb-n1">Demoguy ft Handsome boy</p>
+<h2 >Relaxation <p class="font-12" id="currentTime">0:00</p></h2>
+  <div class="progress-container card-bottom">
+      <span class="progress" id="progressBar"></span> 
+    </div>
+</div>
+</div>
+</div>
+</div>
+   <audio id="myAudio" src="Cinematic_Action_Trailer_Background_Music___Villain_Entry_Bgm_No_Copyright(256k).mp3"></audio>
+
+</div>
+
+</div>
+</div>
+
+<script type="text/javascript" src="bootstrap.min.js"></script>
+<script type="text/javascript" src="custom.js"></script>
+<script>
+const audio = document.getElementById('myAudio');
+const playPauseBt = document.getElementById('playPauseBt');
+const progressBar = document.getElementById('progressBar');
+const currentTime = document.getElementById('currentTime');
+const progressContainer = document.querySelector('.progress-container');
+
+let isPlaying = false;
+
+playPauseBt.addEventListener('click', function() {
+  if (isPlaying) {
+    audio.pause();
+  } else {
+    audio.play();
+  }
+  isPlaying = !isPlaying;
+});
+
+audio.addEventListener('timeupdate', function() {
+  const duration = audio.duration;
+  const currentTimeValue = audio.currentTime;
+  const progress = (currentTimeValue / duration) * 100;
+  progressBar.style.width = progress + '%';
+  
+  let minutes = Math.floor(currentTimeValue / 60);
+  let seconds = Math.floor(currentTimeValue - minutes * 60);
+  if (seconds < 10) {
+    seconds = '0' + seconds;
+  }
+  currentTime.textContent = minutes + ':' + seconds;
+});
+
+progressContainer.addEventListener('click', function(e) {
+  const progressWidth = this.clientWidth;
+  const clickX = e.offsetX;
+  const duration = audio.duration;
+
+  audio.currentTime = (clickX / progressWidth) * duration;
+});
+</script>
+    </div>
+
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/custom.js"></script>
+<script>
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+    const timelineProgress = document.getElementById('timelineProgress');
+
+    function togglePlayPause() {
+      const audio = document.getElementById('audio'); // Replace 'audio' with the ID of your audio element
+
+      if (audio.paused) {
+        audio.play();
+        playIcon.style.display = 'none';
+        pauseIcon.style.display = 'inline';
+      } else {
+        audio.pause();
+        playIcon.style.display = 'inline';
+        pauseIcon.style.display = 'none';
+      }
+    }
+
+    function updateTimeline() {
+      const audio = document.getElementById('audio'); // Replace 'audio' with the ID of your audio element
+      const progress = (audio.currentTime / audio.duration) * 100;
+      timelineProgress.style.width = `${progress}%`;
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = document.getElementById('audio'); // Replace 'audio' with the ID of your audio element
+      audio.addEventListener('timeupdate', updateTimeline);
+    });
+  </script>
+  <script>
+      const myPlayIcon = document.getElementById('myPlayIcon');
+const myPauseIcon = document.getElementById('myPauseIcon');
+const myTimelineProgress = document.getElementById('myTimelineProgress');
+
+function mytogglePlayPause(){
+  const myaudio = document.getElementById('myaudio');
+  if (myaudio.paused){
+    myaudio.play();
+    myPlayIcon.style.display = 'none';
+    myPauseIcon.style.display = 'inline';
+  }else{
+    myaudio.pause();
+    myPlayIcon.style.display = 'inline';
+    myPauseIcon.style.display = 'none';
+  }
+}
+
+function myupdateTimeline(){
+  const myaudio = document.getElementById('myaudio');
+  const progress = (myaudio.currentTime / myaudio.duration) * 100;
+  myTimelineProgress.style.width = `${progress}%`;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const myaudio = document.getElementById('myaudio');
+  myaudio.addEventListener('timeupdate', myupdateTimeline);
+});
+  </script>
+  
+</body></html>
